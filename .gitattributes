@@ -1,0 +1,13 @@
+# 默认按文本处理，检出时转为 LF（保证 JS/CSS/JSON 跨平台一致）
+* text=auto eol=lf
+
+# 二进制文件不做换行转换
+*.png binary
+*.ico binary
+*.crx binary
+*.zip binary
+*.pem binary
+
+# Windows 脚本保持 CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
