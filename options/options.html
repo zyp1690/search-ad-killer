@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>搜索广告终结者 · 设置</title>
+  <link rel="stylesheet" href="options.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="topbar__inner">
+        <div class="topbar__brand">
+          <span class="topbar__logo">🛡</span>
+          <div>
+            <h1>搜索广告终结者</h1>
+            <p>精准清理搜索结果中的推广内容</p>
+          </div>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="masterSwitch" />
+          <span class="switch__track"><span class="switch__thumb"></span></span>
+          <span class="switch__text">启用净化</span>
+        </label>
+      </div>
+    </header>
+
+    <main class="content">
+      <!-- 处理方式 -->
+      <section class="card">
+        <h2 class="card__title">处理方式</h2>
+        <p class="card__desc">决定广告被清理后如何呈现，可随时在扩展弹窗中快速切换。</p>
+        <div class="mode-grid" id="modeGrid">
+          <label class="mode">
+            <input type="radio" name="mode" value="collapse" />
+            <div class="mode__body">
+              <div class="mode__name">折叠提示 <span class="tag tag--rec">推荐</span></div>
+              <div class="mode__desc">压缩成一条细提示条，点击可临时展开查看。不丢失内容，最稳妥。</div>
+            </div>
+          </label>
+          <label class="mode">
+            <input type="radio" name="mode" value="hide" />
+            <div class="mode__body">
+              <div class="mode__name">直接隐藏</div>
+              <div class="mode__desc">用 CSS 隐藏广告，页面无任何痕迹，加载最快。</div>
+            </div>
+          </label>
+          <label class="mode">
+            <input type="radio" name="mode" value="remove" />
+            <div class="mode__body">
+              <div class="mode__name">彻底删除</div>
+              <div class="mode__desc">从 DOM 中移除节点，页面最干净，对抗改版能力最强。</div>
+            </div>
+          </label>
+        </div>
+      </section>
+
+      <!-- 去除平台与类型 -->
+      <section class="card">
+        <div class="card__head">
+          <div>
+            <h2 class="card__title">净化平台与类型</h2>
+            <p class="card__desc">
+              支持 6 大搜索引擎。勾选平台卡片即可把它加入配置并开启净化，下方为所有已勾选平台配置具体广告类型。
+            </p>
+          </div>
+        </div>
+
+        <!-- 平台卡片：勾选=加入配置，右侧开关=启用净化（静态结构，JS 只同步状态） -->
+        <div class="platform-grid" id="platformGrid">
+          <div class="platform is-on is-current" data-site="baidu" title="百度搜索">
+            <div class="platform__head">
+              <label class="platform__check">
+                <input type="checkbox" checked />
+                <span class="platform__box"></span>
+              </label>
+              <span class="platform__name">百度搜索</span>
+              <button type="button" class="platform__switch" data-on="1" title="点击关闭该平台的净化"><span class="platform__knob"></span></button>
+            </div>
+            <div class="platform__meta">9 / 12 项已启用</div>
+            <a class="platform__url" href="https://www.baidu.com" target="_blank" rel="noreferrer">www.baidu.com</a>
+          </div>
+
+          <div class="platform is-on" data-site="so360" title="360 搜索">
+            <div class="platform__head">
+              <label class="platform__check">
+                <input type="checkbox" />
+                <span class="platform__box"></span>
+              </label>
+              <span class="platform__name">360 搜索</span>
+              <button type="button" class="platform__switch" data-on="1" title="点击关闭该平台的净化"><span class="platform__knob"></span></button>
+            </div>
+            <div class="platform__meta">6 / 8 项已启用</div>
+            <a class="platform__url" href="https://www.so.com" target="_blank" rel="noreferrer">www.so.com</a>
+          </div>
+
+          <div class="platform is-on" data-site="sogou" title="搜狗搜索">
+            <div class="platform__head">
+              <label class="platform__check">
+                <input type="checkbox" />
+                <span class="platform__box"></span>
+              </label>
+              <span class="platform__name">搜狗搜索</span>
+              <button type="button" class="platform__switch" data-on="1" title="点击关闭该平台的净化"><span class="platform__knob"></span></button>
+            </div>
+            <div class="platform__meta">6 / 7 项已启用</div>
+            <a class="platform__url" href="https://www.sogou.com" target="_blank" rel="noreferrer">www.sogou.com</a>
+          </div>
+
+          <div class="platform is-on" data-site="bing" title="必应">
+            <div class="platform__head">
+              <label class="platform__check">
+                <input type="checkbox" />
+                <span class="platform__box"></span>
+              </label>
+              <span class="platform__name">必应</span>
+              <button type="button" class="platform__switch" data-on="1" title="点击关闭该平台的净化"><span class="platform__knob"></span></button>
+            </div>
+            <div class="platform__meta">3 / 4 项已启用</div>
+            <a class="platform__url" href="https://www.bing.com" target="_blank" rel="noreferrer">www.bing.com</a>
+          </div>
+
+          <div class="platform" data-site="google" title="Google">
+            <div class="platform__head">
+              <label class="platform__check">
+                <input type="checkbox" />
+                <span class="platform__box"></span>
+              </label>
+              <span class="platform__name">Google</span>
+              <button type="button" class="platform__switch" data-on="0" title="点击开启该平台的净化"><span class="platform__knob"></span></button>
+            </div>
+            <div class="platform__meta is-off">未启用净化</div>
+            <a class="platform__url" href="https://www.google.com" target="_blank" rel="noreferrer">www.google.com</a>
+          </div>
+
+          <div class="platform" data-site="ddg" title="DuckDuckGo">
+            <div class="platform__head">
+              <label class="platform__check">
+                <input type="checkbox" />
+                <span class="platform__box"></span>
+              </label>
+              <span class="platform__name">DuckDuckGo</span>
+              <button type="button" class="platform__switch" data-on="0" title="点击开启该平台的净化"><span class="platform__knob"></span></button>
+            </div>
+            <div class="platform__meta is-off">未启用净化</div>
+            <a class="platform__url" href="https://duckduckgo.com" target="_blank" rel="noreferrer">duckduckgo.com</a>
+          </div>
+        </div>
+
+        <!-- 类型配置区 -->
+        <div class="site-config" id="siteConfig">
+          <div class="site-config__head">
+            <div class="site-config__title">
+              <span class="site-config__name" id="siteName">百度搜索</span>
+              <span class="site-config__meta" id="siteMeta">12 项类型</span>
+            </div>
+            <div class="card__actions">
+              <button class="btn btn--ghost" id="selectAll">全选</button>
+              <button class="btn btn--ghost" id="selectSafe">仅安全项</button>
+              <button class="btn btn--ghost" id="selectNone">全不选</button>
+            </div>
+          </div>
+
+          <div class="site-config__quick">
+            <button type="button" class="link" id="selectAllSites">全选平台</button>
+            <button type="button" class="link" id="clearSites">仅保留常用</button>
+          </div>
+
+          <div class="rule-list" id="ruleList"></div>
+        </div>
+      </section>
+
+      <!-- 高级选项 -->
+      <section class="card">
+        <h2 class="card__title">高级选项</h2>
+        <p class="card__desc">以下选项对所有搜索站点生效。</p>
+        <div class="opt-list">
+          <label class="opt">
+            <input type="checkbox" id="optNotice" />
+            <div class="opt__body">
+              <div class="opt__name">显示过滤提示条</div>
+              <div class="opt__desc">页面顶部显示「已过滤 N 项广告」的悬浮提示。</div>
+            </div>
+          </label>
+          <label class="opt">
+            <input type="checkbox" id="optFade" />
+            <div class="opt__body">
+              <div class="opt__name">提示条自动淡出</div>
+              <div class="opt__desc">单条广告的「展开」提示 6 秒后自动淡化，避免视觉干扰。</div>
+            </div>
+          </label>
+          <label class="opt">
+            <input type="checkbox" id="optGap" />
+            <div class="opt__body">
+              <div class="opt__name">清理残留空白</div>
+              <div class="opt__desc">隐藏空的结果容器，让移除广告后的页面排版更紧凑。</div>
+            </div>
+          </label>
+          <label class="opt">
+            <input type="checkbox" id="optDebug" />
+            <div class="opt__body">
+              <div class="opt__name">调试模式</div>
+              <div class="opt__desc">在控制台输出失效选择器与命中详情，用于排查规则是否需要更新。</div>
+            </div>
+          </label>
+        </div>
+      </section>
+
+      <!-- 自定义规则 -->
+      <section class="card">
+        <div class="card__head">
+          <div>
+            <h2 class="card__title">自定义规则</h2>
+            <p class="card__desc">
+              为规则库尚未覆盖的广告位补充选择器。每条规则可勾选多个适用平台，
+              无需为每个平台重复书写。
+            </p>
+          </div>
+          <div class="card__actions">
+            <button class="btn btn--ghost" id="applyToAll">全平台应用</button>
+          </div>
+        </div>
+
+        <div class="rule-cards" id="customRuleList"></div>
+
+        <div class="rule-empty" id="customEmpty">
+          还没有自定义规则。点击下方按钮添加，或在广告上右键「检查元素」找到选择器后填入。
+        </div>
+
+        <div class="row-actions row-actions--start">
+          <button class="btn btn--primary" id="addCustom">+ 添加规则</button>
+          <span class="row-actions__hint" id="customHint">0 条规则</span>
+        </div>
+      </section>
+
+      <!-- 数据管理 -->
+      <section class="card">
+        <h2 class="card__title">数据管理</h2>
+        <p class="card__desc">导出配置可在多台电脑间同步，或用于重置后恢复。</p>
+        <div class="row-actions row-actions--start">
+          <button class="btn btn--primary" id="exportBtn">导出配置</button>
+          <button class="btn btn--ghost" id="importBtn">导入配置</button>
+          <button class="btn btn--danger" id="resetBtn">恢复默认设置</button>
+        </div>
+      </section>
+
+      <div class="savebar" id="saveBar">
+        <span class="savebar__text">设置已保存并生效</span>
+      </div>
+
+      <footer class="pagefoot">
+        <div class="pagefoot__row">
+          <span class="pagefoot__name">搜索广告终结者</span>
+          <span class="pagefoot__ver">v3.5.0</span>
+        </div>
+        <div class="pagefoot__row pagefoot__row--sub">
+          <span>作者 火舞狂沙</span>
+          <a class="pagefoot__link" href="https://github.com/zyp1690" target="_blank" rel="noreferrer noopener">github.com/zyp1690</a>
+        </div>
+        <div class="pagefoot__row pagefoot__row--sub">
+          <span>MIT License</span>
+          <span class="pagefoot__sep">·</span>
+          <a class="pagefoot__link" href="https://github.com/zyp1690/search-ad-killer/issues" target="_blank" rel="noreferrer noopener">问题反馈</a>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <script src="../shared/common.js"></script>
+  <script src="../rules/rules.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

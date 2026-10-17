@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>搜索广告终结者</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="head">
+      <div class="head__title">
+        <span class="head__logo">🛡</span>
+        <span>广告终结者</span>
+      </div>
+      <label class="switch" title="总开关">
+        <input type="checkbox" id="masterSwitch" />
+        <span class="switch__track"><span class="switch__thumb"></span></span>
+      </label>
+    </header>
+
+    <div class="sitetag" id="siteTag">百度</div>
+
+    <div class="stat" id="statBox">
+      <div class="stat__num" id="statNum">0</div>
+      <div class="stat__label">本页已过滤广告</div>
+      <button class="stat__reset" id="resetBtn" title="清零计数">清零</button>
+    </div>
+
+    <div class="section">
+      <div class="section__label">处理方式</div>
+      <div class="segmented" id="modeGroup">
+        <button class="seg" data-mode="collapse">折叠提示</button>
+        <button class="seg" data-mode="hide">直接隐藏</button>
+        <button class="seg" data-mode="remove">彻底删除</button>
+      </div>
+      <p class="hint" id="modeHint"></p>
+    </div>
+
+    <div class="section">
+      <div class="section__label">
+        <span id="typeLabel">去除类型</span>
+        <button class="link" id="openOptions">全部设置 ›</button>
+      </div>
+      <div class="types" id="typeList"></div>
+    </div>
+
+    <footer class="foot">
+      <span class="foot__status" id="pageStatus">等待检查…</span>
+      <button class="foot__btn" id="reloadBtn">刷新页面</button>
+    </footer>
+
+    <div class="credit">
+      火舞狂沙 ·
+      <a href="https://github.com/zyp1690" target="_blank" rel="noreferrer noopener">github.com/zyp1690</a>
+    </div>
+  </div>
+
+  <script src="../shared/common.js"></script>
+  <script src="../rules/rules.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

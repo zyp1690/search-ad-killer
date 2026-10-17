@@ -1,0 +1,13 @@
+# 打包产物
+dist/
+
+# CRX 签名私钥 —— 严禁提交或分享，泄露等于交出扩展身份
+.crx-key.pem
+
+# 系统与编辑器
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

@@ -1,0 +1,73 @@
+{
+  "manifest_version": 3,
+  "name": "搜索广告终结者",
+  "short_name": "广告终结者",
+  "version": "3.5.0",
+  "description": "精准去除百度、360、搜狗、必应、Google、DuckDuckGo 六大搜索引擎结果中的推广广告。去除平台与类型均可自由勾选。",
+  "author": "火舞狂沙",
+  "homepage_url": "https://github.com/zyp1690",
+  "documentation_url": "https://github.com/zyp1690/search-ad-killer#readme",
+  "support_url": "https://github.com/zyp1690/search-ad-killer/issues",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "搜索广告终结者",
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+  "background": {
+    "service_worker": "background/service-worker.js"
+  },
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "*://*.baidu.com/*",
+    "*://*.so.com/*",
+    "*://*.sogou.com/*",
+    "*://*.bing.com/*",
+    "*://*.google.com/*",
+    "*://*.duckduckgo.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://www.baidu.com/*",
+        "*://m.baidu.com/*",
+        "*://www.so.com/*",
+        "*://m.so.com/*",
+        "*://www.sogou.com/*",
+        "*://www.bing.com/*",
+        "*://cn.bing.com/*",
+        "*://www.google.com/*",
+        "*://duckduckgo.com/*",
+        "*://html.duckduckgo.com/*",
+        "*://lite.duckduckgo.com/*"
+      ],
+      "js": [
+        "shared/common.js",
+        "rules/rules.js",
+        "content/content.js"
+      ],
+      "css": [
+        "content/content.css"
+      ],
+      "run_at": "document_start",
+      "all_frames": false
+    }
+  ]
+}
